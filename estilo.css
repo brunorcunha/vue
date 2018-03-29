@@ -1,10 +1,11 @@
 #formulario div{
 	display:inline-block;
 	padding-right:20px;
+	margin:1px;
 }
 #formulario label{
 	display:inline-block;
-	width:150px;
+	width:150px;	
 }
 #formulario button{
 	font-size:16px;
