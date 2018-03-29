@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Prova técnica</title>
+		<link rel="stylesheet" href="estilo.css">	
+	</head>
+	<body>
+		<h1>Prova Técnica por Bruno Cunha</h1>
+		
+		<form id="formulario" @submit="sendForm" action="/something" method="post">
+			<h2>Formulário</h2>
+			<div v-for="campo in campos">
+				<label>{{campo}}</label>
+				<input text="" v-model="indicador[campo]"/>
+			</div>
+			<p>
+				<button type="submit">Salvar</button>  
+			</p>
+		</form>
+		
+		<hr>
+		
+		<div id="tabela">
+			<h2>Tabela</h2>
+			<demo-grid
+				:data="gridData"
+				:columns="gridColumns">
+			</demo-grid>
+		</div>
+		
+		<script type="text/x-template" id="grid-template">
+		  <table>
+			<thead>
+			  <tr>
+				<th v-for="key in columns">
+				  {{ key | capitalize }}
+				</th>
+				<th>Editar</th>
+				<th>Deletar</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr v-for="(entry, i) in filteredData">
+				<td v-for="key in columns">
+				  {{entry[key]}}
+				</td>
+				<td>
+					<button v-on:click="editarIndicador(entry)">editar</button>
+				</td>
+				<td>
+					<button v-on:click="deletarIndicador(entry.id, i)">x</button>
+				</td>
+			  </tr>
+			</tbody>
+		  </table>
+		</script>
+		
+		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
